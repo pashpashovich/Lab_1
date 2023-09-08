@@ -1,14 +1,16 @@
 import random
 
+
 def merge_dicts(dict1, dict2):
     result = dict1.copy()
     result.update(dict2)
     return result
 
+
 while True:
     try:
         kol = int(input("Введите количество словарей для добавления: "))
-        if kol > 1:
+        if kol >= 1:
             break
         else:
             print("Введите значение, больше 1")
@@ -94,4 +96,3 @@ for d in dict_list:
 
 print("Результирующий словарь после слияния:")
 print(merged_dict)
-
