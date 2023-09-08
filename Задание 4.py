@@ -80,9 +80,6 @@ else:
                 my_set.add(key)
                 value = random.randint(start_value, finish_value)
                 dict_i[key] = value
-                break
-            else:
-                continue
         dict_list.append(dict_i)
 
 # Сливаем несколько словарей в один
