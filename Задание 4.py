@@ -65,36 +65,30 @@ else:
             except ValueError:
                 print("Неверный ввод...Повторите попытку")
         while True:
-            while True:
-                try:
-                    start_value = int(input("Введите начало дипазона значений (целое число): "))
-                    break
-                except ValueError:
-                    print("Неверный ввод... Повторите попытку")
-            while True:
-                try:
-                    finish_value = int(input("Введите конец диапазона значений (целое число): "))
-                    if start_value < finish_value:
-                        break
-                    else:
-                        print("Начальное значение должно быть меньше конечного... Повторите попытку")
-                except ValueError:
-                    print("Неверный ввод... Повторите попытку")
-            for c in range(1, k + 1):
-                while True:
-                    key = random.randint(start_value, finish_value)
-                    if key not in my_set:
-                        my_set.add(key)
-                        value = random.randint(start_value, finish_value)
-                        dict_i[key] = value
-                        break
-            dict_list.append(dict_i)
+            try:
+                start_value = int(input("Введите начало диапазона значений (целое число): "))
+                finish_value = int(input("Введите конец диапазона значений (целое число): "))
+            except ValueError:
+                print("Неверный ввод... Повторите попытку")
+            if start_value < finish_value:
+                break
+            else:
+                print("Начальное значение должно быть меньше конечного... Повторите попытку")
+        for c in range(1, k + 1):
+            key = random.randint(start_value, finish_value)
+            if key not in my_set:
+                my_set.add(key)
+                value = random.randint(start_value, finish_value)
+                dict_i[key] = value
+                break
+            else:
+                continue
+        dict_list.append(dict_i)
 
-# Merging all dictionaries from the list into one
+# Сливаем несколько словарей в один
 merged_dict = dict()
 for d in dict_list:
     merged_dict = merge_dicts(merged_dict, d)
 
 print("Результирующий словарь после слияния:")
 print(merged_dict)
-
