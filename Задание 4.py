@@ -1,16 +1,14 @@
 import random
 
-
 def merge_dicts(dict1, dict2):
     result = dict1.copy()
     result.update(dict2)
     return result
 
-
 while True:
     try:
         kol = int(input("Введите количество словарей для добавления: "))
-        if kol >= 1:
+        if kol > 1:
             break
         else:
             print("Введите значение, больше 1")
@@ -67,18 +65,21 @@ else:
             except ValueError:
                 print("Неверный ввод...Повторите попытку")
         while True:
-            try:
-                start_value = int(input("Введите начало дипазона значений (целое число): "))
-                break
-            except ValueError:
-                print("Неверный ввод... Повторите попытку")
-        while True:
-            try:
-                finish_value = int(input("Введите конец диапазона значений (целое число): "))
-                break
-            except ValueError:
-                print("Неверный ввод... Повторите попытку")
-        if start_value < finish_value:
+            while True:
+                try:
+                    start_value = int(input("Введите начало дипазона значений (целое число): "))
+                    break
+                except ValueError:
+                    print("Неверный ввод... Повторите попытку")
+            while True:
+                try:
+                    finish_value = int(input("Введите конец диапазона значений (целое число): "))
+                    if start_value < finish_value:
+                        break
+                    else:
+                        print("Начальное значение должно быть меньше конечного... Повторите попытку")
+                except ValueError:
+                    print("Неверный ввод... Повторите попытку")
             for c in range(1, k + 1):
                 while True:
                     key = random.randint(start_value, finish_value)
@@ -89,10 +90,11 @@ else:
                         break
             dict_list.append(dict_i)
 
-# Сливаем все словари в 1
+# Merging all dictionaries from the list into one
 merged_dict = dict()
 for d in dict_list:
     merged_dict = merge_dicts(merged_dict, d)
 
 print("Результирующий словарь после слияния:")
 print(merged_dict)
+
